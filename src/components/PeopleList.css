@@ -1,0 +1,36 @@
+.people-list-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.5); /* שכבה כהה לקריאה ברורה */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+  
+  .people-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .people-list li {
+    background: rgba(255, 255, 255, 0.8);
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+  

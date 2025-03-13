@@ -1,51 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "./SelectLocation.css";
 
 const SelectLocation = () => {
-  const [location, setLocation] = useState("");
-  const [error, setError] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("");
   const navigate = useNavigate();
+  const currentUser = localStorage.getItem("currentUser");
 
-  const handleSetLocation = (e) => {
-    e.preventDefault();
+  const handleLocationSelect = (location) => {
+    setSelectedLocation(location);
+  };
 
-    if (!location.trim()) {
-      setError("Please select a location");
-      return;
-    }
+  const handleConfirmLocation = () => {
+    if (!selectedLocation) return;
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const currentUser = localStorage.getItem("currentUser");
-
-    const updatedUsers = [...users, { username: currentUser, location }];
+    const updatedUsers = users.filter(user => user.username !== currentUser);
+    updatedUsers.push({ username: currentUser, location: selectedLocation });
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
     navigate("/people-list");
   };
 
   return (
-    <div className="page-container">
-      <div className="box">
-        <h2>Select Your Location</h2>
-        {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSetLocation}>
-          <select
-            className="input-field"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
+    <div className="select-location-container">
+      <h2>Select Your Location</h2>
+      <div className="location-buttons">
+        {["Building 1", "Building 2", "Coffee Shop", "Parking Lot"].map((place) => (
+          <button 
+            key={place} 
+            className={`location-button ${selectedLocation === place ? "selected" : ""}`} 
+            onClick={() => handleLocationSelect(place)}
           >
-            <option value="">Choose a location</option>
-            <option value="Amir Building">Amir Building</option>
-            <option value="Dylen Building 2">Dylen Building</option>
-            <option value="Palmer Building 2">Palmer Building</option>
-            <option value="Cafeteria">Cafeteria</option>
-            <option value="Library">Library</option>
-          </select>
-          <button type="submit" className="button">Join</button>
-        </form>
+            {place}
+          </button>
+        ))}
       </div>
+      <button onClick={handleConfirmLocation} className="confirm-button" disabled={!selectedLocation}>
+        Confirm Location
+      </button>
     </div>
   );
 };

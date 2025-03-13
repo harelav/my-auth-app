@@ -1,0 +1,46 @@
+.select-location-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .location-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .location-button {
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #a67c52;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .location-button.selected {
+    background: #8c6a42;
+    color: white;
+  }
+  
+  .confirm-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .confirm-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
