@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PeopleList.css";
-import building1Image from "../assets/Building1.jpg"; 
-import building2Image from "../assets/Building2.jpg";
-import coffeeShopImage from "../assets/Coffe_Shop.jpg";
-import parkingLotImage from "../assets/Parking_Lot.jpeg";
 
 const PeopleList = () => {
   const [users, setUsers] = useState([]);
@@ -23,45 +19,25 @@ const PeopleList = () => {
     navigate("/");
   };
 
-  // קביעת תמונת הרקע לפי המיקום
+  // מוצא את המיקום הנוכחי של המשתמש
   const currentUserData = users.find(user => user.username === currentUser);
   const location = currentUserData ? currentUserData.location : "";
 
-  const getBackgroundImage = () => {
-    switch (location) {
-      case "Building 1":
-        return building1Image;
-      case "Building 2":
-        return building2Image;
-      case "Coffee Shop":
-        return coffeeShopImage;
-      case "Parking Lot":
-        return parkingLotImage;
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div 
-      className="people-list-container" 
-      style={{ backgroundImage: getBackgroundImage() ? `url(${getBackgroundImage()})` : "none" }}
-    >
-      <div className="overlay">
-        <h2>People in {location}</h2>
-        {users.length > 0 ? (
-          <ul className="people-list">
-            {users
-              .filter(user => user.location === location)
-              .map((user, index) => (
-                <li key={index}>{user.username}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No one is here yet.</p>
-        )}
-        <button onClick={handleExit} className="button">Exit</button>
-      </div>
+    <div className="people-list-container">
+      <h2>People in {location}</h2>
+      {users.length > 0 ? (
+        <ul className="people-list">
+          {users
+            .filter(user => user.location === location)
+            .map((user, index) => (
+              <li key={index}>{user.username}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No one is here yet.</p>
+      )}
+      <button onClick={handleExit} className="button">Exit</button>
     </div>
   );
 };

@@ -1,52 +1,66 @@
 .welcome-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-  
-  .overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .button-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .enter-button {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    background: #a67c52; /* Warm brown */
-    border: none;
-    border-radius: 6px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .enter-button:hover {
-    background: #8c6a42; /* Darker brown */
-  }
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* גורם לתמונה להיות מאחור */
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* רקע כהה חצי-שקוף */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.enter-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: #a67c52; /* Warm brown */
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.enter-button:hover {
+  background: #8c6a42; /* Darker brown */
+}
+
+.app-description {
+  position: absolute;
+  top: 20px; /* מרחיק את התיאור מקצה הדף */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; /* טקסט בצבע לבן */
+  font-size: 18px;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+  padding: 10px;
+}
+
