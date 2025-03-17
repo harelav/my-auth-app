@@ -1,36 +1,63 @@
 .people-list-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  
-  .overlay {
-    background: rgba(0, 0, 0, 0.5); /* שכבה כהה לקריאה ברורה */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-  }
-  
-  .people-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .people-list li {
-    background: rgba(255, 255, 255, 0.8);
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-  }
-  
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff8ec;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  color: #5a4d3b; 
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #6b5b4e;
+  margin-bottom: 20px;
+}
+
+.no-users {
+  font-size: 20px;
+  color: #a07b50;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.user-card {
+  background: #fffae6; 
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.user-card:hover {
+  transform: scale(1.05);
+}
+
+.user-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3e332a;
+}
+
+.location {
+  font-size: 18px;
+  color: #5a4d3b;
+  margin-top: 5px;
+}

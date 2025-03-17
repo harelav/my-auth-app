@@ -1,43 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import "./PeopleList.css";
 
 const PeopleList = () => {
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
-  const currentUser = localStorage.getItem("currentUser");
 
   useEffect(() => {
+    // getting user list from local storage
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setUsers(storedUsers);
-  }, []);
-
-  const handleExit = () => {
-    const updatedUsers = users.filter(user => user.username !== currentUser);
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    localStorage.removeItem("currentUser");
-    navigate("/");
-  };
-
-  // מוצא את המיקום הנוכחי של המשתמש
-  const currentUserData = users.find(user => user.username === currentUser);
-  const location = currentUserData ? currentUserData.location : "";
+  }, []); // should add dependencies here?
 
   return (
     <div className="people-list-container">
-      <h2>People in {location}</h2>
-      {users.length > 0 ? (
-        <ul className="people-list">
-          {users
-            .filter(user => user.location === location)
-            .map((user, index) => (
-              <li key={index}>{user.username}</li>
-          ))}
-        </ul>
+      <h1>who's here?</h1> {}
+      <p className="subtitle">See who’s currently on campus and where they are.</p>
+      
+      {users.length === 0 ? (
+        <p className="no-users">Hmm, looks like no one is checked in yet.</p> 
       ) : (
-        <p>No one is here yet.</p>
+        <div className="people-grid">
+          {users.map((user, index) => (
+            <div key={index} className="user-card">
+              <div className="user-icon">👤</div> {/* maybe change icons? */}
+              <p className="username">{user.username}</p>
+              <p className="location">🏫 {user.location}</p> {}
+            </div>
+          ))}
+        </div>
       )}
-      <button onClick={handleExit} className="button">Exit</button>
     </div>
   );
 };

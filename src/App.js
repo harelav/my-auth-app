@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Welcome from "./components/Welcome";
-import Login from "./components/Login";
+import EnterName from "./components/EnterName";
 import SelectLocation from "./components/SelectLocation";
 import PeopleList from "./components/PeopleList";
+import About from "./components/About";  // changed from aboutCampus
 import Navbar from "./components/Navbar";
+import FunFacts from "./components/FunFacts"; // just some random facts
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("currentUser");
-    if (storedUser) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
   return (
     <Router>
-      <Navbar isAuthenticated={isAuthenticated} />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path="/select-location" element={isAuthenticated ? <SelectLocation /> : <Navigate to="/login" />} />
-        <Route path="/people-list" element={isAuthenticated ? <PeopleList /> : <Navigate to="/login" />} />
+        <Route path="/enter-name" element={<EnterName />} />  {/* first needs to type their name */}
+        <Route path="/select-location" element={<SelectLocation />} />  {}
+        <Route path="/people-list" element={<PeopleList />} />  {}
+        <Route path="/about" element={<About />} />  {}
+        <Route path="/fun-facts" element={<FunFacts />} />  {/* fun little section */}
       </Routes>
     </Router>
   );

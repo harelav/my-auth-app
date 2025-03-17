@@ -1,0 +1,77 @@
+.funfacts-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .content {
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 10px;
+  }
+  
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: white !important;  
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .fact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .fact-button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: #0073e6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .fact-button:hover {
+    background: #005bb5;
+  }
+  
+  .fact-text {
+    margin-top: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+  }
+  

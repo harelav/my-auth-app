@@ -1,29 +1,21 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({ isAuthenticated }) => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    localStorage.removeItem("password");
-    navigate("/login");
-    window.location.reload(); // ריענון כדי לוודא שהסטייט יתעדכן
-  };
-
+const Navbar = ({ isAuthenticated, handleLogout }) => {
   return (
     <nav className="navbar">
-      <Link to="/">Home</Link>
-      {isAuthenticated ? (
-        <>
-          <Link to="/select-location">Select Location</Link>
-          <Link to="/people-list">People List</Link>
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </>
-      ) : (
-        <Link to="/login">Login</Link>
-      )}
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">Home Page</Link> {}
+        <div className="navbar-links">
+          <Link to="/about">About</Link> {}
+          <Link to="/fun-facts">Fun Facts</Link> {}
+          <Link to="/people-list">Who's Here?</Link> {/* maybe do dropdown? */}
+          {isAuthenticated && (
+            <button className="logout-button" onClick={handleLogout}>logout</button> 
+          )}
+        </div>
+      </div>
     </nav>
   );
 };
